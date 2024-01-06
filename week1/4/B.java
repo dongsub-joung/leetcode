@@ -1,13 +1,13 @@
-//https://walkccc.me/LeetCode/problems/1337/#__tabbed_1_2
-
+// https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
 class Solution {
+    //https://walkccc.me/LeetCode/problems/1337/#__tabbed_1_2
     public static int[] kWeakestRows(int[][] mat, int k) {
         int[] answer= new int[k];
         int[][] candidates= new int[mat.length][2];
-
+        
         for (int i=0; i< mat.length; ++i){
             candidates[i][0]= IntStream.of(mat[i]).sum();
             candidates[i][1]= i;

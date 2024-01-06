@@ -2,8 +2,6 @@
 import heapq
 import collections
 
- 
-
 # score = soldiersCount * rows + currentRowIndex
 class Solution:
     # 1. sum - sorted
