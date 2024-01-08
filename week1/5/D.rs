@@ -51,7 +51,6 @@ fn main() {
             answer.push(right.pop().unwrap());   
         }
 
-
 // 2
 // <<BP<A>>Cd-
 // ThIsIsS3Cr3t
