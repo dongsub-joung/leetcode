@@ -1,3 +1,4 @@
+// 백준 5397 키로거 rust
 // https://www.acmicpc.net/problem/5397
 
 use std::io::{stdin, BufRead};
