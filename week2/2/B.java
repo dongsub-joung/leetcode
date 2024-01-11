@@ -1,8 +1,6 @@
 // https://leetcode.com/problems/course-schedule/
 // source code: https://github.com/sean1125/Leetcode_java/blob/master/leetcode%20207%20Course%20Schedule.java
 
-
-
 public class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
 
