@@ -1,6 +1,7 @@
 // https://www.acmicpc.net/problem/7562
-// 재귀가 있어 러스트로 못푸는 문제, 소유권 에러가 난다.
+// https://www.acmicpc.net/problem/7562
 
+use std::borrow::Borrow;
 use std::io::{stdin, BufReader, BufRead};
 use std::collections::VecDeque;
 
@@ -19,10 +20,14 @@ impl Point {
     }
 }
 
-pub fn bfs(arr: Vec<i32>, points: Vec<Point>, max_len_one_side: usize) -> i32{
+pub fn bfs(arr: Vec<i32>, mut points: Vec<Point>, max_len_one_side: usize) -> i32{
 
-    let mut deque: VecDeque<&Point> = VecDeque::new();
-    deque.push_back(&points[0]);
+    const RANGE_X:[i32; 8]= [-1, -2, -2, -1, 1, 2, 2, 1];
+    const RANGE_Y:[i32; 8]=[-2, -1, 1, 2, 2, 1, -1, -2];
+
+    let mut deque: VecDeque<Point> = VecDeque::new();
+    let first_point= points[0].try_into().unwrap();
+    deque.push_back(first_point);
 
     let mut visited: Vec<Vec<bool>>= Vec::new();
     visited[points[0].x as usize][points[0].y as usize]= true;
@@ -36,8 +41,8 @@ pub fn bfs(arr: Vec<i32>, points: Vec<Point>, max_len_one_side: usize) -> i32{
         }
 
         for i in 0..8 {
-            let dx= point.x + range_x[i];
-            let dy= point.y + range_y[i];
+            let dx= point.x + RANGE_X[i];
+            let dy= point.y + RANGE_Y[i];
 
             if dx < 0 || dy< 0 
                 || dx >= max_len_one_side as i32 || dy>= max_len_one_side as i32{
@@ -46,7 +51,8 @@ pub fn bfs(arr: Vec<i32>, points: Vec<Point>, max_len_one_side: usize) -> i32{
 
             if !visited[dx as usize][dy as usize] {
                 visited[dx as usize][dy as usize]= true;
-                deque.push_back(&Point::new_wiht_cnt(dx, dy, point.cnt + 1));
+                let point_with_cnt= Point::new_wiht_cnt(dx, dy, point.cnt + 1);
+                deque.push_back(point_with_cnt);
             }
         }
 
