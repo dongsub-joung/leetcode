@@ -1,7 +1,5 @@
 // https://www.acmicpc.net/problem/7562
 // 재귀가 있어 러스트로 못푸는 문제, 소유권 에러가 난다.
-// for문으로 풀어도 되는데 시간 상
-// https://james-lim.github.io/2019/03/26/%EC%9E%AC%EA%B7%80-%ED%98%B8%EC%B6%9C%EC%9D%84-%EB%B0%98%EB%B3%B5%EB%AC%B8%EC%9C%BC%EB%A1%9C-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0/
 
 use std::io::{stdin, BufReader, BufRead};
 use std::collections::VecDeque;
@@ -22,8 +20,6 @@ impl Point {
 }
 
 pub fn bfs(arr: Vec<i32>, points: Vec<Point>, max_len_one_side: usize) -> i32{
-    let range_x= [-1, -2, -2, -1, 1, 2, 2, 1];
-    let range_y= [-2, -1, 1, 2, 2, 1, -1, -2];
 
     let mut deque: VecDeque<&Point> = VecDeque::new();
     deque.push_back(&points[0]);
@@ -90,7 +86,6 @@ fn main() {
         points.push(Point::new(will_koma_xy[X], will_koma_xy[Y]));
 
         // progress
-        
         results.push(bfs(arr.clone(), points, max_len_one_side,));
     }
 }
