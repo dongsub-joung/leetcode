@@ -75,10 +75,16 @@ fn main() {
     }
     let mut mini= usize::MAX;
     let mut min_idx= 0;
-    for (idx , e) in hashmap.clone() {
+    for (_key , e) in hashmap.clone() {
         if mini > e {
             mini= e;
-            min_idx= idx;
+            min_idx= _key;
+        }
+
+        // x_x 
+        // 동일한 최빈값이 있을경우 '두 번째로 작은 값'을 출력해야 한다.
+        if mini == e{
+            _key.min(other);
         }
     }
     let val= mini as i32;
