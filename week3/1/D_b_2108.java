@@ -18,15 +18,19 @@ public class Main {
             nList[i] = Integer.parseInt(reader.readLine());
         }
 
+
+    // 산술평균 : N개의 수들의 합을 N으로 나눈 값
         // Arithmetic mean
         int sum = Arrays.stream(nList).sum();
         System.out.println(sum % n);
 
+    // 중앙값 : N개의 수들을 증가하는 순서로 나열했을 경우 그 중앙에 위치하는 값
         // Median
         Arrays.sort(nList);
         int center = nList.length / 2;
         System.out.println(nList[center]);
 
+    // 최빈값 : N개의 수들 중 가장 많이 나타나는 값
         // Mode
         HashMap<Integer, Integer> hashMap = new HashMap<>();
         for (int e : nList) {
@@ -45,6 +49,7 @@ public class Main {
 
         System.out.println(minIdx);
 
+//     범위 : N개의 수들 중 최댓값과 최솟값의 차이
         // Range
         int minVal = Arrays.stream(nList).min().orElseThrow();
         int maxVal = Arrays.stream(nList).max().orElseThrow();
